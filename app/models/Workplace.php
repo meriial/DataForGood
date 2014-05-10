@@ -28,8 +28,11 @@ class Workplace extends Eloquent {
 		$km = DB::table('commute')
 			->join( 'registrant', 'registrant.registrant_id', '=', 'commute.registrant_id' )
 			->join( 'workplace', 'registrant.workplace_id', '=', 'workplace.workplace_id' )
-			->where( 'workplace.workplace_id', $this->workplace_id )
-			->sum( 'commute.distance_km' );
+			->select( DB::raw('sum(commute.distance_km) as km, workplace_name, workplace_headcount') )
+/* 			->where( 'workplace.workplace_id', $this->workplace_id ) */
+			->get();
+			
+	
 
 /* 		Log::error( '>> workplace '.$this->workplace_id.': '.$km.' km total' ); */
 		
