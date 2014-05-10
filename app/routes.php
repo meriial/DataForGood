@@ -13,5 +13,6 @@
 
 Route::get('/', function()
 {
+	$r = Registrant::all();
 	return View::make('hello');
 });
