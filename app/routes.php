@@ -18,4 +18,11 @@ Route::get('/', function()
 });
 
 
+Route::resource('city', 'CityController');
+Route::resource('city-competition-groups', 'CityCompetitionGroupController');
+Route::resource('events', 'EventController');
+Route::resource('commutes', 'CommuteController');
 Route::resource('registrants', 'RegistrantController');
+Route::resource('transport-modes', 'TransportModeController');
+Route::resource('workplaces', 'WorkplaceController');
+Route::resource('workplace-groups', 'WorkplaceGroupController');

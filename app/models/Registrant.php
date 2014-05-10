@@ -9,4 +9,6 @@ class Registrant extends Eloquent {
 	 */
 	protected $table = 'registrant';
 	
+	protected $primaryKey = 'registrant_id';
+	
 }
