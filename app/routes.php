@@ -13,6 +13,6 @@
 
 Route::get('/', function()
 {
-	$r = Registrant::all();
+	$r = Registrant::take(40);
 	return View::make('hello');
 });
