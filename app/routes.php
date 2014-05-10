@@ -13,8 +13,7 @@
 
 Route::get('/', function()
 {
-	$r = Registrant::take(40);
-	return View::make('hello');
+	return View::make('home');
 });
 
 
