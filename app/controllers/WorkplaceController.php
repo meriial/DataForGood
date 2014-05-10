@@ -11,10 +11,14 @@ class WorkplaceController extends \BaseController {
 	{
 		$skip = Input::get('skip');
 		$groups = Workplace::all();
-		if( $skip ) {
-/* 			$r->skip($skip); */
+
+		$response = [];
+		foreach( $groups as $workplace )
+		{
+			$response[] = $workplace->stats();
 		}
-		return Response::json($groups);
+		
+		return Response::json($response);
 	}
 
 
@@ -50,40 +54,11 @@ class WorkplaceController extends \BaseController {
 	{
 		$workplace = Workplace::find($id);
 		
-		$participants = Registrant::where('workplace_id', $id)->get();
-		
-		$count = $participants->count();
-		
-		if( $workplace->workplace_headcount != 0 ) {
-			$percent_participation = $count / $workplace->workplace_headcount;
-			$workplace->pp = $percent_participation;
-		}
-		
-		foreach( $participants as $particpant )
-		{
-			// $km += $participant;
-		}
-		
-		$response = 
-		[
-			[
-				'x' => 1234,
-				'y' => $percent_participation,
-				'r' => 30,
-				'label' => 'hello'
-			],
-			[
-				'x' => 4321,
-				'y' => $percent_participation,
-				'r' => 20,
-				'label' => 'second'
-			],
-		];
+		$response = $workplace->stats();
 		
 		return Response::json( $response );
 	}
-
-
+	
 	/**
 	 * Show the form for editing the specified resource.
 	 *
