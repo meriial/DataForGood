@@ -8,5 +8,5 @@ class Registrant extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'registrant';
-
+	
 }

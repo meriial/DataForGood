@@ -16,3 +16,6 @@ Route::get('/', function()
 	$r = Registrant::take(40);
 	return View::make('hello');
 });
+
+
+Route::resource('registrants', 'RegistrantController');
